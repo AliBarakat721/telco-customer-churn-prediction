@@ -71,3 +71,20 @@ Desktop.ini
 .AppleDouble
 .LSOverride
 
+# Virtual Environment
+venv/
+.env
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Jupyter Notebook cache
+.ipynb_checkpoints/
+
+# OS files
+.DS_Store
+
+# Model temporary files
+*.log
