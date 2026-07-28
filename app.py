@@ -1,5 +1,4 @@
 import os
-
 import joblib
 import pandas as pd
 from fastapi import FastAPI, HTTPException, Request
@@ -7,7 +6,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel
-
+from mangum import Mangum
 # 1. تحديد المسار الأساسي للمشروع
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -103,3 +102,4 @@ async def predict(data: PredictionRequest):
         "prediction": prediction,
         "probability": probability,
     }
+handler = Mangum(app)
