@@ -16,7 +16,7 @@
         button:hover { background-color: #0056b3; }
         #result { margin-top: 25px; padding: 15px; border-radius: 5px; text-align: center; font-size: 1.2rem; font-weight: bold; display: none; }
         .churn { background-color: #ffdddd; border: 1px solid #ff9999; color: #d8000c; }
-        .no-churn { background-color: #ddffdd; border: 1px solid: #99ff99; color: #006400; }
+        .no-churn { background-color: #ddffdd; border: 1px solid #99ff99; color: #006400; }
     </style>
 </head>
 <body>
@@ -189,12 +189,11 @@
 
 <script>
     document.getElementById('prediction-form').addEventListener('submit', async function (event) {
-        event.preventDefault(); // Prevent the form from submitting the traditional way
+        event.preventDefault();
 
         const formData = new FormData(event.target);
         const data = {};
         formData.forEach((value, key) => {
-            // Convert numerical fields from string to number
             if (key === 'tenure' || key === 'SeniorCitizen') {
                 data[key] = parseInt(value, 10);
             } else if (key === 'MonthlyCharges' || key === 'TotalCharges') {
@@ -235,7 +234,7 @@
             console.error('Error:', error);
             const resultDiv = document.getElementById('result');
             resultDiv.textContent = 'An error occurred. Please check the console for details.';
-            resultDiv.className = 'churn'; // Use error styling
+            resultDiv.className = 'churn';
             resultDiv.style.display = 'block';
         }
     });
